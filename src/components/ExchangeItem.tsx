@@ -35,11 +35,12 @@ const RenderFooter = ({ exchangeState, exchangeRate }: any) => {
   const leftCurrency = exchangeState[0].currency;
   const rightCurrency = exchangeState[1].currency;
 
-  const result = exchangeRate[leftCurrency] / exchangeRate[rightCurrency];
+  const result = exchangeRate[rightCurrency] / exchangeRate[leftCurrency];
 
   return (
     <div className="exchangeItem__footer">
-      {`1 ${leftCurrency} = ${result} ${rightCurrency}`}
+      <span>{`1${leftCurrency} = `}</span>
+      {`${result.toFixed(3)}${rightCurrency}`}
     </div>
   );
 };
@@ -126,13 +127,13 @@ const ExchangeItem = ({ isOdd, currency, value, id }: ExchangeItemProps) => {
   return (
     <div className={`exchangeItem ${isOdd ? "grey" : ""}`}>
       <div className="exchangeItem__head">
-        <h3>You Have</h3>
+        <h3>{isOdd ? "You Get" : "You Have"}</h3>
         <p>{activeCurrency?.value}</p>
       </div>
       <div className="exchangeItem__converter">
         <Input value={value} id={id} calcNewValues={calcNewValues} />
         <Select
-          currency={currency}
+          activeCurrency={activeCurrency || options[0]}
           id={id}
           calcNewValues={calcNewValues}
           options={options}

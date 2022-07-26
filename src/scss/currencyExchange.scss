@@ -3,12 +3,10 @@
     position: relative;
     
     width: 90%;
-    // height: 320px;
 
     margin: 0 auto;
     margin-top: 220px;
 
-    // background-color: red;
     border-radius: 8px;
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.1);
 
@@ -17,5 +15,41 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
+        
+        transition: 0.1s linear;
+        cursor: pointer;
+
+        path {
+            transition: 0.5s ease;
+            fill: white;
+        }
+
+        &:hover {
+            path {
+                fill: #2EC850;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1440px) {
+        width: 98%;
+    }
+
+    @media screen and (max-width: 1240px) {
+        width: 90%;
+        flex-direction: column;
+
+        &__image {
+            left: 0px;
+            transform: translate(-20%,-70%);
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: 80px;
+        &__image {
+            left: 50%;
+            transform: translate(-50%,-70%);
+        }
     }
 }

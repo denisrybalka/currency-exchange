@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 
 import "../../scss/select.scss";
@@ -32,14 +32,23 @@ const customStyles = {
 };
 
 interface SelectProps {
-  currency: string;
   id: number;
   calcNewValues: any;
   options: IOption[];
+  activeCurrency: IOption;
 }
 
-const Select = ({ currency, id, calcNewValues, options }: SelectProps) => {
-  const defaultValue = options[options.findIndex((o) => o.label === currency)];
+const Select = ({
+  activeCurrency,
+  id,
+  calcNewValues,
+  options,
+}: SelectProps) => {
+  const [defaultValue, setDefaultValue] = useState<number>(options.findIndex((a) => a.label === activeCurrency.label));
+  
+  useEffect(() => {
+    setDefaultValue(options.findIndex((a) => a.label === activeCurrency.label));
+  }, [activeCurrency]);
 
   return (
     <ReactSelect
@@ -49,7 +58,7 @@ const Select = ({ currency, id, calcNewValues, options }: SelectProps) => {
       components={{
         IndicatorSeparator: () => null,
       }}
-      defaultValue={defaultValue}
+      value={options[defaultValue]}
       styles={customStyles}
       onChange={(asset: any) => calcNewValues(id, asset.label)}
     />

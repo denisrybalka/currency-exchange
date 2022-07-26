@@ -1,0 +1,45 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 75px;
+    padding: 0px 125px;
+
+    background-color: #FAFAFA;
+
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+
+    &__info {
+        font-size: 14px;
+        color: lightgrey;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            font-size: 14px;
+            color: lightgray;
+
+            span {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    span {
+        font-weight: bold;
+        color: lightgreen;
+    }
+
+    @media screen and (max-width: 767px) {
+        height: auto;
+        flex-direction: column;
+        align-items: start;
+
+        gap: 20px;
+        padding: 40px;
+    }
+}
