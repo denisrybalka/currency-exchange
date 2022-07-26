@@ -13,6 +13,11 @@ interface ExchangeItemProps {
   id: number;
 }
 
+interface RenderFooterProps {
+  exchangeState: ICurrency[];
+  exchangeRate: any;
+}
+
 const options = [
   {
     value: "United States Dollar",
@@ -31,7 +36,7 @@ const options = [
   },
 ];
 
-const RenderFooter = ({ exchangeState, exchangeRate }: any) => {
+const RenderFooter = ({ exchangeState, exchangeRate }: RenderFooterProps) => {
   const leftCurrency = exchangeState[0].currency;
   const rightCurrency = exchangeState[1].currency;
 
@@ -56,7 +61,7 @@ const ExchangeItem = ({ isOdd, currency, value, id }: ExchangeItemProps) => {
   }, [currency]);
 
   const calcNewValues = (id: number, newValue: number | string) => {
-    if (!isNaN(+newValue)) {
+    if (!isNaN(+newValue)) { // if value can be given as number
       const newArray = exchangeState.map((el: ICurrency) => {
         if (el.id === id) {
           return {
@@ -64,7 +69,7 @@ const ExchangeItem = ({ isOdd, currency, value, id }: ExchangeItemProps) => {
             value: newValue,
           };
         } else {
-          if (id === 1) {
+          if (id === 1) { // check the order of exchange
             return {
               ...el,
               value:

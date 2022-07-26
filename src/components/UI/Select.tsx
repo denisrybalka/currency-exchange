@@ -3,6 +3,13 @@ import ReactSelect from "react-select";
 
 import "../../scss/select.scss";
 
+interface SelectProps {
+  id: number;
+  calcNewValues: any;
+  options: IOption[];
+  activeCurrency: IOption;
+}
+
 const formatOptionLabel = ({ value, label, imageSrc }: IOption) => {
   return (
     <div className="option">
@@ -30,13 +37,6 @@ const customStyles = {
     fontWeight: "bold",
   }),
 };
-
-interface SelectProps {
-  id: number;
-  calcNewValues: any;
-  options: IOption[];
-  activeCurrency: IOption;
-}
 
 const Select = ({
   activeCurrency,

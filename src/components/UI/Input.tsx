@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../../scss/input.scss";
 
-const Input = ({
-  value,
-  id,
-  calcNewValues,
-}: {
+interface InputProps {
   value: number;
   id: number;
   calcNewValues: any;
-}) => {
-  const [inputValue, setInputValue] = React.useState(0);
+}
+
+const Input = ({ value, id, calcNewValues }: InputProps) => {
+  const [inputValue, setInputValue] = useState(0);
 
   useEffect(() => {
     setInputValue(value);
@@ -19,6 +17,7 @@ const Input = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
+    
     if (!isNaN(value)) {
       setInputValue(value);
 
