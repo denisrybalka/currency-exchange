@@ -1,0 +1,20 @@
+.exchangeItem {
+    width: 50%;
+
+    padding: 40px 80px;
+
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    &__converter {
+        display: flex;
+        margin-bottom: 18px;
+    }
+}
+
+.exchangeItem.grey {
+    background-color: #FAFAFA;
+}

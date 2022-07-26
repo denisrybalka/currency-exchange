@@ -1,0 +1,9 @@
+.option {
+    display: flex;
+    align-items: center;
+
+    &__flag {
+        width: 32px;
+        margin-right: 12px;
+    }
+}
